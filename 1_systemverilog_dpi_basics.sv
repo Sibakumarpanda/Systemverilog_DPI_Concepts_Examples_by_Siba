@@ -55,3 +55,20 @@ import "DPI" function void free(chandle ptr);
 
 // Open array of 8-bit
 import "DPI" function void OpenF(logic [7:0] Arg[]);  
+
+
+C vs SystemVerilog Data Types:
+  
+-A pair of matching type definitions is required to pass a value through DPI: the SystemVerilog definition and the C definition.
+-SystemVerilog types which are directly compatible with C types are presented below. 
+  
+SYSTEMVERILOG TYPE	                  C Type
+  
+byte	                                char
+int	                                  int
+longint	                              long long
+shortint	                            short int
+real	                                double
+shortreal	                            float
+chandle	                              void*
+string	                              char*  
