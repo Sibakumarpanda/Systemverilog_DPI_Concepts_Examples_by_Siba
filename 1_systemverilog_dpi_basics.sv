@@ -35,3 +35,23 @@ void slave_write(const int I1, const int I2)
   buff[I1] = I2;
   ...
 }  
+
+To be Noted:
+-The C function slave_write is called inside the SystemVerilog function, the arguments being passed by value (we will see more detail about this later in the tutorial).
+-The function imported from C has two inputs, which in C are declared as const.
+-This is because they shouldn’t be changed in the C function.
+-Both DPI imported and exported functions can be declared in any place where normal SystemVerilog functions can be (e.g. package, module, program, interface, constructs).
+-Also all functions used in DPI complete their execution instantly (zero simulation time), just as normal SystemVerilog functions. 
+-chandle is a special SystemVerilog type that is used for passing C pointers as arguments to imported DPI functions.
+
+// User-defined function
+import "DPI" function void AFunc();
+
+// Standard C function
+import "DPI" function chandle malloc(int size);
+
+// Standard C function
+import "DPI" function void free(chandle ptr);
+
+// Open array of 8-bit
+import "DPI" function void OpenF(logic [7:0] Arg[]);  
